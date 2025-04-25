@@ -7,12 +7,14 @@ import (
 
 	"github.com/PinataCloud/pinata-go-sdk/pinata/files"
 	"github.com/PinataCloud/pinata-go-sdk/pinata/types"
+	"github.com/PinataCloud/pinata-go-sdk/pinata/upload"
 )
 
 // Client is the main Pinata SDK client
 type Client struct {
 	Config *types.Config
 	Files  *files.Service
+	Upload *upload.Service
 }
 
 // DefaultAPIURL is the default API endpoint
@@ -42,6 +44,7 @@ func NewWithConfig(config *types.Config) *Client {
 
 	// Initialize the services with the configuration
 	client.Files = files.New(config)
+	client.Upload = upload.New(config)
 
 	return client
 }
